@@ -8,9 +8,9 @@
   },
   "scripts": {
     "test": "NODE_ENV=test nyc tape tests/* | tap-spec",
-    "dev": "nodemon src/app.js",
+    "dev": "nodemon src/index.js",
     "coverage": "nyc --reporter=lcov npm run test",
-    "start": "node src/app.js",
+    "start": "node src/index.js",
     "build": "babel public -d output --copy-files",
     "autobuild": "watch 'npm run build' public"
   },
