@@ -5,7 +5,7 @@ const compression = require('compression');
 const favicon = require('serve-favicon');
 const exphbs = require('express-handlebars');
 
-const routes = require('./routes');
+const routes = require('./controller');
 const helpers = require('./views/helpers/index');
 
 // creating an express app
