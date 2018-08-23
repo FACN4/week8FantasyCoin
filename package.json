@@ -1,0 +1,53 @@
+{
+  "name": "fantasycoin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test nyc tape tests/* | tap-spec",
+    "dev": "nodemon src/app.js",
+    "coverage": "nyc --reporter=lcov npm run test",
+    "start": "node src/app.js",
+    "build": "babel public -d output --copy-files",
+    "autobuild": "watch 'npm run build' public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACN4/week8FantasyCoin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACN4/week8FantasyCoin/issues"
+  },
+  "homepage": "https://github.com/FACN4/week8FantasyCoin#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.3",
+    "cookie": "^0.3.1",
+    "env2": "^2.2.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "pg": "^7.4.3",
+    "request": "^2.88.0",
+    "serve-favicon": "^2.5.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-airbnb": "^2.5.3",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "nodemon": "^1.18.3",
+    "nyc": "^12.0.2",
+    "supertest": "^3.1.0",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1",
+    "watch": "^1.0.2"
+  }
+}
