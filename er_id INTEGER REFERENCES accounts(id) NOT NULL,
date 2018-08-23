@@ -1,0 +1,8 @@
+[31msyntax error at or near "NOT"
+LINE 5: ...XT CHECK (start_currency IN ( ('USD','BTC','ETH')) NOT NULL,
+                                                              ^
+[0m
+[31msyntax error at or near ","
+LINE 5: ...XT NOT NULL CHECK (start_currency IN ( ('USD','BTC','ETH')),
+                                                                      ^
+[0m
