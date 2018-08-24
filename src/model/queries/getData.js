@@ -27,4 +27,17 @@ const compareHash = (password, hashedRow) => new Promise((resolve, reject) => {
   });
 });
 
-module.exports = { getHash, compareHash };
+const checkBalance = (amount, from, userID) => new Promise((resolve, reject) => {
+  const queryString = 'SELECT id FROM accounts WHERE id=$1 AND $2>=$3';
+  dbConnection.query(queryString, [userID, from, amount], (err, res) => {
+    if (err) {
+      reject(err);
+    } else if (res.rows.length === 0) {
+      reject(new Error('insufficient funds'));
+    } else {
+      resolve(res.rows[0]);
+    }
+  });
+});
+
+module.exports = { getHash, compareHash, checkBalance };
