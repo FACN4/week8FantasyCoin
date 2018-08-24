@@ -32,5 +32,18 @@ const storeUser = (hash, userDetails) => new Promise((resolve, reject) => {
   });
 });
 
+const balanceUpdate = (from, amountFrom, to, amountTo, userId) => new Promise((resolve, reject) => {
+  const queryString = `INSERT INTO accounts ($1,$3)
+                      VALUES(((SELECT $1 from accounts where id = $5)-$2),
+                      ((SELECT $3 FROM accounts where id = $5)+ $4))
+                      RETURNING id, username, password, USD, BTC, ETH;`;
+  dbConnection.query(queryString, [from, amountFrom, to, amountTo, userId], (err, res) => {
+    if (err) {
+      reject(err);
+    } else {
+      resolve(res.rows[0]);
+    }
+  });
+});
 
-module.exports = { hashPassword, storeUser };
+module.exports = { hashPassword, storeUser, balanceUpdate };
