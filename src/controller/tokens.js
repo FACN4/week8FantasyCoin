@@ -4,10 +4,10 @@ const jwt = require('jsonwebtoken');
 const verifyJWTToken = token => new Promise((resolve, reject) => {
   jwt.verify(token, process.env.SECRET, (err, decodedToken) => {
     if (err || !decodedToken) {
-      reject(err);
-    } else {
-      resolve(decodedToken);
+      return reject(err);
     }
+    console.log('token file', decodedToken);
+    return resolve(decodedToken);
   });
 });
 
