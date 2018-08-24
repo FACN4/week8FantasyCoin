@@ -28,13 +28,17 @@ const compareHash = (password, hashedRow) => new Promise((resolve, reject) => {
 });
 
 const checkBalance = (amount, from, userID) => new Promise((resolve, reject) => {
+  console.log('Im in check ballance');
   const queryString = 'SELECT id FROM accounts WHERE id=$1 AND $2>=$3';
   dbConnection.query(queryString, [userID, from, amount], (err, res) => {
     if (err) {
+      console.log('check balance', err);
       reject(err);
     } else if (res.rows.length === 0) {
+      console.log('check balance', res.rows);
       reject(new Error('insufficient funds'));
     } else {
+      console.log('check balance', res.rows);
       resolve(res.rows[0]);
     }
   });
